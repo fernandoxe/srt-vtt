@@ -1,0 +1,22 @@
+{
+  "name": "srt-vtt",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": ""
+  },
+  "keywords": [
+    "srt",
+    "vtt",
+    "subtitles",
+    "webvtt",
+    "subrip"
+  ],
+  "author": "fernandoxe",
+  "license": "MIT",
+  "dependencies": {
+    "iconv-lite": "^0.4.13",
+    "jschardet": "^1.4.1"
+  }
+}

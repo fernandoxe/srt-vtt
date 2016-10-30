@@ -2,14 +2,14 @@ var jschardet = require('jschardet');
 var iconv = require('iconv-lite');
 var fs = require('fs');
 
-function srtToVtt(srt){
+function srtToVtt(srt, encoding){
     var string;
     if(srt instanceof Buffer){
-        string = decode(srt);
+        string = decode(srt, encoding);
     }else if(typeof srt == 'string'){
         if(fileExists(srt)){
             var buffer = fs.readFileSync(srt);
-            string = decode(buffer);
+            string = decode(buffer, encoding);
         }else{
             string = srt;
         }
@@ -23,9 +23,9 @@ function convertToVtt(srtString){
     return vtt;
 }
 
-function decode(buffer){
-    var charset = jschardet.detect(buffer);
-    return iconv.decode(buffer, charset.encoding);
+function decode(buffer, encoding){
+    encoding = encoding || jschardet.detect(buffer).encoding;
+    return iconv.decode(buffer, encoding);
 }
 
 function fileExists(filepath){
